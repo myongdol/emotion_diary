@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Diary from './pages/Diary';
 import New from './pages/New';
 import Edit from './pages/Edit';
-import RouteTest from './components/RouteTest';
+
 
 
 function App() {
@@ -18,7 +18,6 @@ function App() {
           <Route path='/new' element={<New/>}/>
           <Route path='/edit' element={<Edit/>}/>
         </Routes>
-        <RouteTest/>
       </div>
     </BrowserRouter>
   );
