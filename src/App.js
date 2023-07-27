@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h2>App.js</h2>
+        <h2>일기장 만들기</h2>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/diary/:id' element={<Diary/>}/>
