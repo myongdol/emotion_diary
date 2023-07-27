@@ -22,6 +22,11 @@ const Edit = () => {
         }}>
             홈으로
         </button>
+        <button onClick={() => {
+            navigate(-1);
+        }}>
+            뒤로가기
+        </button>
     </div>
 }
 
