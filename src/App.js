@@ -7,6 +7,7 @@ import Edit from './pages/Edit';
 
 //컴포넌트
 import MyButton from './components/MyButton';
+import Header from './components/Header';
 
 
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Header headText={"헤더!!!!!"}/>
         <h2>일기장 만들기</h2>
         <MyButton text={'버튼'} type={"positive"} onClick={() => alert("hi")}/>
         <MyButton text={'버튼'} type={"negative"} onClick={() => alert("hi")}/>
