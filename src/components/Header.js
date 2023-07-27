@@ -1,5 +1,5 @@
 const Header = ({headText, leftChild, rightChild}) => {
-    return <hader>
+    return <header>
         <div className="head_btn_left">
             {leftChild}
         </div>
@@ -9,7 +9,7 @@ const Header = ({headText, leftChild, rightChild}) => {
         <div className="head_btn_right">
             {rightChild}
         </div>
-    </hader>
+    </header>
 }
 
 export default Header;

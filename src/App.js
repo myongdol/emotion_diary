@@ -15,7 +15,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header headText={"헤더!!!!!"}/>
+        <Header 
+        headText={"헤더!!!!!"}
+        leftChild={<MyButton text={"왼쪽 버튼"} onClick={()=>alert("왼쪽")}/>}
+        rightChild={<MyButton text={"오른쪽 버튼"} onClick={()=>alert("오른쪽")}/>}
+        />
         <h2>일기장 만들기</h2>
         <MyButton text={'버튼'} type={"positive"} onClick={() => alert("hi")}/>
         <MyButton text={'버튼'} type={"negative"} onClick={() => alert("hi")}/>
