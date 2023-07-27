@@ -14,7 +14,7 @@ function App() {
         <h2>App.js</h2>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/diary' element={<Diary/>}/>
+          <Route path='/diary/:id' element={<Diary/>}/>
           <Route path='/new' element={<New/>}/>
           <Route path='/edit' element={<Edit/>}/>
         </Routes>
