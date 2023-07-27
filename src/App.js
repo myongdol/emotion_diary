@@ -5,6 +5,9 @@ import Diary from './pages/Diary';
 import New from './pages/New';
 import Edit from './pages/Edit';
 
+//컴포넌트
+import MyButton from './components/MyButton';
+
 
 
 function App() {
@@ -12,6 +15,9 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <h2>일기장 만들기</h2>
+        <MyButton text={'버튼'} type={"positive"} onClick={() => alert("hi")}/>
+        <MyButton text={'버튼'} type={"negative"} onClick={() => alert("hi")}/>
+        <MyButton text={'버튼'} onClick={() => alert("hi")}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/diary/:id' element={<Diary/>}/>

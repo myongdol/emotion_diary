@@ -33,3 +33,31 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+/* 버튼 */
+.MyButton {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px 10px 20px;
+  /* padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px; */
+  font-size: 20px;
+  white-space: nowrap;
+  font-family: 'Nanum Brush Script';
+}
+
+.MyButton_default {
+  background-color: #ececec;
+  color: black;
+}
+.MyButton_positive {
+  background-color: rgb(25, 47, 248);
+  color: white;
+}
+.MyButton_negative {
+  background-color: rgb(243, 71, 71);
+  color: white;
+}
