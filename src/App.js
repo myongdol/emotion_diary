@@ -4,26 +4,70 @@ import Home from './pages/Home';
 import Diary from './pages/Diary';
 import New from './pages/New';
 import Edit from './pages/Edit';
+import { useReducer, useRef } from 'react';
 
-//컴포넌트
-import MyButton from './components/MyButton';
-import Header from './components/Header';
-
-
+const reducer = (state, action) => {
+  let newState = [];
+  switch(action.type) {
+    case 'INIT':{
+      return action.data;
+    }
+    case 'CREATE':{
+      const newitem = {
+        ...action.data
+      };
+      newState =[newitem, ...state];
+      break;
+    }
+    case 'REMOVE': {
+      newState = state.filter((item) => item.id !== action.targetId);
+      break;
+    }
+    case 'EDIT': {
+      newState = state.map((item) => item.id === action.data.id? {...action.data}: item)
+      break;
+    }
+    default:
+      return state;
+  }
+  return newState;
+}
 
 function App() {
+
+  const [data, dispatch] = useReducer(reducer, []);
+
+  const dataId = useRef(0);
+
+  const onCreate = (date, content, emotion) => {
+    dispatch({type: "CREATE", data:{
+      id: dataId.current,
+      date: new Date(date).getTime(),
+      content,
+      emotion
+    }})
+    dataId.current += 1;
+  }
+  
+  const onRemove = (targetId) => {
+    dispatch({type: "REMOVE", targetId});
+  }
+
+  const onEdit = (targetId, date, content, emotion)=> {
+    dispatch({
+      type: "EDIT",
+      data: {
+        id: targetId,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    })
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
-        <Header 
-        headText={"헤더!!!!!"}
-        leftChild={<MyButton text={"왼쪽 버튼"} onClick={()=>alert("왼쪽")}/>}
-        rightChild={<MyButton text={"오른쪽 버튼"} onClick={()=>alert("오른쪽")}/>}
-        />
-        <h2>일기장 만들기</h2>
-        <MyButton text={'버튼'} type={"positive"} onClick={() => alert("hi")}/>
-        <MyButton text={'버튼'} type={"negative"} onClick={() => alert("hi")}/>
-        <MyButton text={'버튼'} onClick={() => alert("hi")}/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/diary/:id' element={<Diary/>}/>
