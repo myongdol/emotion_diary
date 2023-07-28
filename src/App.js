@@ -36,6 +36,26 @@ const reducer = (state, action) => {
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
+const dummyData = [
+  {
+    id:1,
+    meotion:3,
+    content:"테스트용 일기",
+    date:1690567976999,
+  },
+  {
+    id:2,
+    meotion:1,
+    content:"테스트용 일기222",
+    date:1690567977000,
+  },
+  {
+    id:3,
+    meotion:2,
+    content:"테스트용 일기333",
+    date:1690567977001,
+  },
+]
 
 function App() {
 
