@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Diary from './pages/Diary';
 import New from './pages/New';
 import Edit from './pages/Edit';
-import { useReducer, useRef } from 'react';
+import React, { useReducer, useRef } from 'react';
 
 const reducer = (state, action) => {
   let newState = [];
@@ -32,6 +32,9 @@ const reducer = (state, action) => {
   }
   return newState;
 }
+
+export const DiaryStateContext = React.createContext();
+
 
 function App() {
 
@@ -66,6 +69,7 @@ function App() {
   }
 
   return (
+    <DiaryStateContext.Provider value={data}>
     <BrowserRouter>
       <div className="App">
         <Routes>
@@ -76,6 +80,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </DiaryStateContext.Provider>
   );
 }
 
