@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from '../components/Header';
 import MyButton from '../components/MyButton';
+import { DiaryDispatchContext } from "../App";
+import DiaryList from "../components/DiaryList";
 
 const Home = () => {
+    
 
     const [curDate, setCurDate] = useState(new Date());
     console.log(curDate)
@@ -17,6 +20,36 @@ const Home = () => {
         setCurDate(new Date(curDate.getFullYear(), curDate.getMonth()-1, curDate.getDate()));
     }
 
+    
+    const diaryList = useContext(DiaryDispatchContext);
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        if(diaryList.length >= 1) {
+
+    
+        const firstDay = new Date(
+            curDate.getFullYear(), 
+            curDate.getMonth(),
+            1
+        ).getTime();
+        
+        const lastDay = new Date(
+            curDate.getFullYear(),
+            curDate.getMonth() + 1,
+            0
+        ).getTime();
+
+        setData(
+            diaryList.filter((item) => firstDay <= item.date && item.date <= lastDay)
+        );  
+    }
+    }, [diaryList, curDate])
+
+    useEffect(() => {
+        console.log(data);
+    }, [data])
+
 
     return <div>
         <Header 
@@ -24,6 +57,7 @@ const Home = () => {
         leftChild={<MyButton text={'<-'} onClick={decreaseMonth}/>}
         rightChild={<MyButton text={'->'} onClick={increaseMonth} />}
         />
+        <DiaryList diaryList={data}/>
     </div>
 }
 

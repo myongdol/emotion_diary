@@ -55,11 +55,23 @@ const dummyData = [
     content:"테스트용 일기333",
     date:1690567977001,
   },
+  {
+    id:4,
+    meotion:2,
+    content:"테스트용 데이터 입니다4",
+    date:1690567977003,
+  },
+  {
+    id:5,
+    meotion:2,
+    content:"테스트용 데이터 헬로우5",
+    date:1690567977002,
+  },
 ]
 
 function App() {
 
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data, dispatch] = useReducer(reducer, dummyData);
 
   const dataId = useRef(0);
 
