@@ -5,6 +5,8 @@ import Header from "./Header";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
 import { useRef } from "react";
+import { useContext } from "react";
+import { DiaryDispatchContext } from "../App";
 
 
 
@@ -55,6 +57,19 @@ const DiaryEditor = () => {
     const [content, setContent] = useState("");
     const contentRef = useRef();
 
+    const {onCreate} = useContext(DiaryDispatchContext);
+
+    const handleSubmit = () => {
+        if(content.length < 1 ){
+            contentRef.current.focus();
+            return;
+        }
+        onCreate(content, date, emotion);
+        navigate('/',{
+            replace: true
+        })
+    }
+
     return (
     <div className="DiaryEditor">
         <Header
@@ -95,6 +110,19 @@ const DiaryEditor = () => {
                         value={content} 
                         onChange={(e) => setContent(e.target.value)}
                         placeholder="오늘은 어떠셨나요?"
+                    />
+                </div>
+            </section>
+            <section>
+                <div className="control_box">
+                    <MyButton
+                        text={'취소하기'}
+                        onClick={() => navigate(-1)}
+                    />
+                    <MyButton
+                        text={'작성하기'}
+                        type={'positive'}
+                        onClick={handleSubmit}
                     />
                 </div>
             </section>
