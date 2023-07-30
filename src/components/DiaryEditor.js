@@ -16,7 +16,7 @@ const DiaryEditor = () => {
     console.log(getStringDate(new Date()))
 
     return (
-    <div>
+    <div className="DiaryEditor">
         <Header
          headText={"새 일기쓰기"} 
          leftChild={<MyButton text={"<- 뒤로가기"} 
@@ -25,9 +25,9 @@ const DiaryEditor = () => {
         <div>
             <section>
                 <h4>오늘은 몇월 몇일 인가요?</h4>
-                <div className="input-box">
+                <div className="input_box">
                     <input
-                        className="input-date" 
+                        className="input_date" 
                         value={date} 
                         onChange={(e)=> setDate(e.target.value)} 
                         type="date"
