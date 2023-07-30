@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Header from '../components/Header';
 import MyButton from '../components/MyButton';
-import { DiaryDispatchContext } from "../App";
+import { DiaryStateContext } from "../App";
 import DiaryList from "../components/DiaryList";
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
     }
 
     
-    const diaryList = useContext(DiaryDispatchContext);
+    const diaryList = useContext(DiaryStateContext);
     const [data, setData] = useState([]);
     
     useEffect(() => {
