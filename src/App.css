@@ -212,6 +212,18 @@ header button{
   gap: 2%;
 }
 
+.DiaryEditor textarea {
+  font-family: 'Nanum Brush Script';
+  font-size: 20px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+  border: none;
+  background-color: #ececec;
+  padding: 20px;
+}
+
 /* EmotionItem */
 .EmotionItem {
   cursor: pointer;
