@@ -8,7 +8,6 @@ const Home = () => {
     
 
     const [curDate, setCurDate] = useState(new Date());
-    console.log(curDate)
     // getMont는 0부터 시작하기 때문애 +!
     const headText = `${curDate.getFullYear()}년 ${curDate.getMonth()+1}월` 
 
