@@ -331,3 +331,20 @@ header button{
   background-color: #fd565f;
   color:  white;
 }
+
+.DiaryPage .diary_content_wrapper {
+  width: 100%;
+  background: #ececec;
+  border-radius: 5px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.DiaryPage .diary_content_wrapper p {
+  text-align: left;
+  padding: 20px;
+  font-size: 24px;
+  font-family: 'Yeon Sung';
+  font-weight: 400;
+  line-height: 2.5;
+}
