@@ -7,12 +7,9 @@ import EmotionItem from "./EmotionItem";
 import { useRef } from "react";
 import { useContext } from "react";
 import { DiaryDispatchContext } from "../App";
+import { getStringDate } from "../util/date";
 
 
-
-const getStringDate = (date) => {
-    return date.toISOString().slice(0, 10);
-}
 
 const env = process.env;
 env.PUBLIC_URL = env.PUBLIC_URL || "";

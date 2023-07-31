@@ -1,25 +1,46 @@
-import { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { DiaryStateContext } from "../App";
-
+import { getStringDate } from "../util/date";
+import Header from "../components/Header";
 
 
 const Diary = () => {
     
     const {id} = useParams();
     const diaryList = useContext(DiaryStateContext);
+    const navigate = useNavigate();
+    const [data, setData] =useState();
 
     useEffect(() => {
         if(diaryList.length >= 1) { 
             const targetDiary = diaryList.find((item) => parseInt(item.id) === parseInt(id));
-            console.log(targetDiary)
+            
+            if(targetDiary) {
+                //일기가 존재 할 때 
+                setData(targetDiary);
+            } else {
+                //일기가 존재 하지 않을 때
+                alert("없는 일기에 접근을 시도 하였습니다.");
+                navigate('/', {replace:true});
+            }
         } 
     }, [id, diaryList])
 
-    return <div>
-        <h1>Diary</h1>
-        <p>일기 상세 페이지</p>
-    </div>
+    if(!data) {
+        return (
+            <div className="DiaryPage">
+                로딩중......
+            </div>
+        )
+    } else {
+        return (
+            <div className="DiaryPage">
+                <Header headText={`${getStringDate(new Date(data.date))}일에 작성한 일기`}/>
+            </div>
+        )
+    }
+
 }
 
 export default Diary;
