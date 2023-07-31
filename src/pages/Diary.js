@@ -4,6 +4,7 @@ import { DiaryStateContext } from "../App";
 import { getStringDate } from "../util/date";
 import Header from "../components/Header";
 import MyButton from "../components/MyButton";
+import { emotionList } from "../util/emotion";
 
 
 const Diary = () => {
@@ -35,6 +36,9 @@ const Diary = () => {
             </div>
         )
     } else {
+
+        const curEmotionData = emotionList.find((item) => parseInt(item.emotion_id) === parseInt(data.emotion))
+        console.log(curEmotionData)
         return (
             <div className="DiaryPage">
                 <Header 
