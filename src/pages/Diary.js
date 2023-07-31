@@ -46,6 +46,17 @@ const Diary = () => {
                     leftChild={<MyButton text={"<-뒤로가기"} onClick={() => navigate(-1)}/>}
                     rightChild={<MyButton text={"수정하기"} onClick={() => navigate(`/edit/${data.id}`)}/>}
                 />
+                <article>
+                    <section>
+                        <h4>오늘의 감정</h4>
+                        <div className="diary_img_wrapper">
+                            <img src={curEmotionData.emotion_img} /> 
+                            <div className="emotion_descript">
+                                {curEmotionData.emotion_descript}
+                            </div>
+                        </div>
+                    </section>
+                </article>
             </div>
         )
     }
