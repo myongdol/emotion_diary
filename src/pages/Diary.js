@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { DiaryStateContext } from "../App";
 import { getStringDate } from "../util/date";
 import Header from "../components/Header";
+import MyButton from "../components/MyButton";
 
 
 const Diary = () => {
@@ -36,7 +37,11 @@ const Diary = () => {
     } else {
         return (
             <div className="DiaryPage">
-                <Header headText={`${getStringDate(new Date(data.date))}일에 작성한 일기`}/>
+                <Header 
+                    headText={`${getStringDate(new Date(data.date))}일에 작성한 일기`}
+                    leftChild={<MyButton text={"<-뒤로가기"} onClick={() => navigate(-1)}/>}
+                    rightChild={<MyButton text={"수정하기"} onClick={() => navigate(`/edit/${data.id}`)}/>}
+                />
             </div>
         )
     }
