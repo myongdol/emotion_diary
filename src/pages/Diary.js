@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DiaryStateContext } from "../App";
 import { getStringDate } from "../util/date";
@@ -13,6 +13,11 @@ const Diary = () => {
     const diaryList = useContext(DiaryStateContext);
     const navigate = useNavigate();
     const [data, setData] =useState();
+
+    useEffect(() => {
+        const titleElement = document.getElementsByTagName('title')[0];
+        titleElement.innerHTML = `일기장 - ${id}번 일기`;
+    },[]);
 
     useEffect(() => {
         if(diaryList.length >= 1) { 
