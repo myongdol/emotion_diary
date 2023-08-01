@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,  { useState } from "react";
 import MyButton from "./MyButton";
 import { useNavigate } from "react-router-dom";
 import DiaryItem from "./DiaryItem";
@@ -15,7 +15,7 @@ const filterOptionList = [
     {value: "bad", name:"나쁜 감정만 보기"},
 ]
 
-const ControlMenu = ({value, onChange, optionList}) => {
+const ControlMenu = React.memo(({value, onChange, optionList}) => {
     return (
     <select
         className="ControlMenu"
@@ -23,13 +23,21 @@ const ControlMenu = ({value, onChange, optionList}) => {
         onChange={(e) => onChange(e.target.value)}>
         {optionList.map((item, idx) => <option value={item.value} key={idx}>{item.name}</option>)}
     </select>)
-}
+})
 
 const DiaryList = ({diaryList}) => {
     const navigate = useNavigate();
 
     const [sortType, setSortType] = useState('latest');
     const [filter, setFilter] = useState('all');
+
+    const handleSetSortType = (sortType) => {
+        setSortType(sortType)
+    }
+
+    const handleSetFilter = (filter) => {
+        setFilter(filter)
+    }
 
     const getProcessedDiaryList = () => {
         const filterCallback = (item) => {
@@ -63,12 +71,12 @@ const DiaryList = ({diaryList}) => {
             <div className="left_col">
             <ControlMenu 
                 value={sortType} 
-                onChange={setSortType} 
+                onChange={handleSetSortType} 
                 optionList={sortOtionList}
             />
             <ControlMenu
                 value={filter}
-                onChange={setFilter}
+                onChange={handleSetFilter}
                 optionList={filterOptionList}
             />
             </div>
