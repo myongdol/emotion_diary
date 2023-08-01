@@ -13,7 +13,7 @@ import { emotionList } from "../util/emotion";
 
 const DiaryEditor = ({isEdit, originData}) => {
     const navigate = useNavigate();
-    const [date, setDate] = useState();
+    const [date, setDate] = useState("");
     
     const [emotion, setEmotion] = useState(3);
     const handleClickEmote = useCallback((emotion) => {
