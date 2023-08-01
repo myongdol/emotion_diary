@@ -4,8 +4,8 @@ import Home from './pages/Home';
 import Diary from './pages/Diary';
 import New from './pages/New';
 import Edit from './pages/Edit';
-import React, { useReducer, useRef } from 'react';
-import { dummyData } from './util/dummyData';
+import React, { useEffect, useReducer, useRef } from 'react';
+
 
 const reducer = (state, action) => {
   let newState = [];
@@ -31,6 +31,7 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+  localStorage.setItem('diary', JSON.stringify(newState))
   return newState;
 }
 
@@ -40,7 +41,8 @@ export const DiaryDispatchContext = React.createContext();
 
 function App() {
 
-  const [data, dispatch] = useReducer(reducer, dummyData);
+
+  const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(6);
 
